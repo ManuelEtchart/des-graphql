@@ -5,10 +5,11 @@ import hbs from 'express-handlebars';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import { logger, loggerError } from './src/utils/logger.js';
-import ProductosRouter from './src/routes/productos.routes.js';
-import MensajesRouter from './src/routes/mensajes.routes.js';
-import InfoRouter from './src/routes/info.routes.js';
-import CarritoRouter from './src/routes/carrito.routes.js';
+import controllerCarrito from './src/controllers/carrito.controller.js';
+import controllerInfo from './src/controllers/info.controller.js';
+import controllerMensajes from './src/controllers/mensajes.controller.js';
+import controllerProductos from './src/controllers/productos.controller.js';
+import graphqlSchema from './src/graphql/graphql.js';
 
 export const app = express();
 
@@ -37,6 +38,27 @@ app.use(session({
    }
 }));
 
+app.use('/graphql', graphqlHTTP({
+    schema: graphqlSchema,
+    rootValue: {
+        getProducto: controllerProductos.productosGET,
+        getCarrito: controllerCarrito.carritoGET,
+        getCarritos: controllerCarrito.carritosGET,
+        getDatos: controllerInfo.infoGET,
+        getMensaje: controllerMensajes.mensajesGET,
+        createProducto: controllerProductos.productosPOST,
+        createCarrito: controllerCarrito.carritoPOST,
+        createMensaje: controllerMensajes.mensajesPOST,
+        changeProducto: controllerProductos.productosPUT,
+        deleteProducto: controllerProductos.productosDELETE,
+        createProductoCarrito: controllerCarrito.carritoProductoPOST,
+        deleteCarrito: controllerCarrito.carritoDELETE,
+        deleteProductoCarrito: controllerCarrito.carritoProductoDELETE
+    },
+    graphiql: true,
+})
+)
+/*
 app.use('/api/carrito', (new CarritoRouter()).start());
 app.use('/api/productos', (new ProductosRouter()).start());
 app.use('/api/mensajes', (new MensajesRouter()).start());
@@ -46,7 +68,7 @@ app.get('/', (req,res)=>{
     logger.info(`ruta ${req.url} metodo ${req.method} implementada`)
     res.redirect('/api/productos')
 });
-
+*/
 app.get('*', (req,res) => {
     res.send({error: '-2', descripcion: `ruta ${req.url} metodo ${req.method} no implementada`});
     logger.warn({error: '-2', descripcion: `ruta ${req.url} metodo ${req.method} no implementada`})

@@ -1,23 +1,23 @@
-import express from 'express';
-import ControllerMensajes from '../controllers/mensajes.controller.js';
+// import express from 'express';
+// import ControllerMensajes from '../controllers/mensajes.controller.js';
 
-const mensajes = express.Router();
+// const mensajes = express.Router();
 
-mensajes.use(express.json());
-mensajes.use(express.urlencoded({extended: true}));
+// mensajes.use(express.json());
+// mensajes.use(express.urlencoded({extended: true}));
 
-class MensajesRouter{
-    constructor(){
-        this.controller = new ControllerMensajes()
-    }
+// class MensajesRouter{
+//     constructor(){
+//         this.controller = new ControllerMensajes()
+//     }
 
-    start(){
-        mensajes.post('', this.controller.mensajesPOST);
+//     start(){
+//         mensajes.post('', this.controller.mensajesPOST);
 
-        return mensajes
-    }
-}
+//         return mensajes
+//     }
+// }
 
 
 
-export default MensajesRouter;
+// export default MensajesRouter;

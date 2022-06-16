@@ -1,34 +1,34 @@
-import express from 'express';
-import ControllerCarrito from '../controllers/carrito.controller.js';
+// import express from 'express';
+// import ControllerCarrito from '../controllers/carrito.controller.js';
 
 
-const carrito = express.Router();
+// const carrito = express.Router();
 
-carrito.use(express.json());
-carrito.use(express.urlencoded({extended: true}));
+// carrito.use(express.json());
+// carrito.use(express.urlencoded({extended: true}));
 
-class CarritoRouter{
-    constructor(){
-        this.controller = new ControllerCarrito()
-    }
+// class CarritoRouter{
+//     constructor(){
+//         this.controller = new ControllerCarrito()
+//     }
 
-    start(){
-        carrito.get('', this.controller.carritosGET)
+//     start(){
+//         carrito.get('', this.controller.carritosGET)
 
-        carrito.post('', this.controller.carritoPOST)
+//         carrito.post('', this.controller.carritoPOST)
 
-        carrito.delete('/:id', this.controller.carritoDELETE);
+//         carrito.delete('/:id', this.controller.carritoDELETE);
 
-        carrito.get('/:id?/productos', this.controller.carritoGET)
+//         carrito.get('/:id?/productos', this.controller.carritoGET)
 
-        carrito.post('/:id/productos/:id_prod', this.controller.carritoProductoPOST)
+//         carrito.post('/:id/productos/:id_prod', this.controller.carritoProductoPOST)
 
-        carrito.get('/:id/pedir', this.controller.carritoPedirGET)
+//         carrito.get('/:id/pedir', this.controller.carritoPedirGET)
 
-        carrito.delete('/:id/productos/:id_prod', this.controller.carritoProductoDELETE)
+//         carrito.delete('/:id/productos/:id_prod', this.controller.carritoProductoDELETE)
 
-        return carrito
-    }
-}
+//         return carrito
+//     }
+// }
 
-export default CarritoRouter;
+// export default CarritoRouter;

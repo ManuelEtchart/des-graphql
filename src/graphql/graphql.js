@@ -1,6 +1,6 @@
 import { buildSchema } from 'graphql';
 
-const graphql = buildSchema(`
+const graphqlSchema = buildSchema(`
     input ProductoInput {
         nombre: String,
         descripcion: String,
@@ -55,13 +55,20 @@ const graphql = buildSchema(`
     type Query {
         getProducto: [Producto]
         getCarrito: [Carrito]
+        getCarritos: [Carrito]
         getDatos: Datos
+        getMensaje: [Mensaje]
     }
     type Mutation {
         createProducto(datos: ProductoInput): Producto
         createCarrito(): Carrito
-        changeProducto(_id: ID!): 
-        deleteProducto(_id: ID!):
-        
+        createMensaje(datos: MensajeInput): Mensaje
+        changeProducto(_id: ID!): [Producto]
+        deleteProducto(_id: ID!): Producto
+        createProductoCarrito(datos: Producto): Carrito
+        deleteCarrito(_id: ID!): Carrito
+        deleteProductoCarrito(_id: ID!): Carrito
     }
 `)
+
+export default graphqlSchema;

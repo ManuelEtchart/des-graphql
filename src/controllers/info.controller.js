@@ -1,13 +1,12 @@
 import { loggerError, logger } from "../utils/logger.js";
 import { cpus } from 'os';
-import MongoDB from "../DAOs/DAOMongoDB.js";
 
-class ControllerInfo {
-    infoGET = async (req,res)=>{
+const controllerInfo = {
+    infoGET: async (req,res)=>{
         logger.info(`ruta ${req.url} metodo ${req.method} implementada`)
         try {
-            res.render('info', { datos: datos(), mensajes: await MongoDB.mensajes.getAll()
-            })
+            const res = datos()
+            return res
         } catch (error) {
             loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada`)
         }
@@ -26,7 +25,7 @@ function datos(){
     return datos
 }
 
-export default ControllerInfo;
+export default controllerInfo;
 
 
     
