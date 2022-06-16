@@ -10,6 +10,7 @@ import controllerInfo from './src/controllers/info.controller.js';
 import controllerMensajes from './src/controllers/mensajes.controller.js';
 import controllerProductos from './src/controllers/productos.controller.js';
 import graphqlSchema from './src/graphql/graphql.js';
+import { graphqlHTTP } from 'express-graphql';
 
 export const app = express();
 
@@ -41,7 +42,8 @@ app.use(session({
 app.use('/graphql', graphqlHTTP({
     schema: graphqlSchema,
     rootValue: {
-        getProducto: controllerProductos.productosGET,
+        getProducto: controllerProductos.productoGET,
+        getProductos: controllerProductos.productosGET,
         getCarrito: controllerCarrito.carritoGET,
         getCarritos: controllerCarrito.carritosGET,
         getDatos: controllerInfo.infoGET,

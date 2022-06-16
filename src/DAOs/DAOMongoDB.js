@@ -15,7 +15,7 @@ class DAOMongoDB extends DAO{
         try {
             await this.conn.connect()
             await this.coleccion.insertMany([obj])
-            return {'Objeto agregado': obj}
+            return {mensaje: {'Objeto agregado': obj}}
         } catch(error){
             console.log(error, "Hubo un error");
         }finally{
@@ -70,7 +70,7 @@ class DAOMongoDB extends DAO{
         try {
             await this.conn.connect()
             if(!this.conn.client.isObjectIdOrHexString(id)) {
-                return {error: `Objeto ${id} no encontrado`}
+                return {mensaje: {error: `Objeto ${id} no encontrado`}}
             }
             await this.coleccion.updateOne({_id : id},{$set: cambios})
             return {msg: `Objeto ${id} modificado`}
@@ -88,7 +88,7 @@ class DAOMongoDB extends DAO{
         try {
             await this.conn.connect()
             if(!this.conn.client.isObjectIdOrHexString(id)) {
-                return {error: `Objeto ${id} no encontrado`}
+                return {mensaje: {error: `Objeto ${id} no encontrado`}}
             }
             await this.coleccion.deleteOne({_id : id})
             return {msg: `Objeto ${id} eliminado`}
@@ -138,7 +138,7 @@ class DAOMongoDB extends DAO{
             await this.conn.connect()
             await this.coleccion.updateOne({_id: id},{$push:{productos: productoBuscadoObj}})
             
-            return  {msg: `Producto ${id_prod} agregado`}
+            return  {mensaje: {msg: `Producto ${id_prod} agregado`}}
         } catch (error) {
             console.log(error, "Hubo un error");
         }
@@ -167,7 +167,7 @@ class DAOMongoDB extends DAO{
             await this.conn.connect()
             await this.coleccion.updateOne({_id: id},{$pull:{productos: productoBuscadoObj}})
             
-            return {msg: `Producto ${id_prod} eliminado`}
+            return {mensaje: {msg: `Producto ${id_prod} eliminado`}}
         } catch (error) {
             console.log(error, "Hubo un error");
         }finally{

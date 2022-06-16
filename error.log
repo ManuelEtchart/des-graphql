@@ -1,0 +1,11 @@
+[2022-06-15T23:25:29.606] [ERROR] default - TypeError: Cannot read property 'id' of undefined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:33:13.780] [ERROR] default - TypeError: Cannot read property 'id' of undefined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:38:27.787] [ERROR] default - TypeError: Cannot read property 'id' of undefined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:43:43.748] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:43:48.929] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:45:27.867] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:45:46.355] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:46:00.414] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:46:02.356] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:46:03.444] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada
+[2022-06-15T23:46:04.577] [ERROR] default - ReferenceError: _id is not defined - Hubo un error en ruta undefined metodo undefined implementada

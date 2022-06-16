@@ -17,6 +17,16 @@ const graphqlSchema = buildSchema(`
         alias: String,
         mensaje: String
     }
+    input ProductoCarritoInput {
+        _id: ID!,
+        nombre: String,
+        descripcion: String,
+        codigo: String,
+        foto: String,
+        precio: Float,
+        stock: Int,
+        timestamp: Float
+    }
     type Producto {
         _id: ID!,
         nombre: String,
@@ -53,21 +63,25 @@ const graphqlSchema = buildSchema(`
         carProy: String
     }
     type Query {
-        getProducto: [Producto]
-        getCarrito: [Carrito]
-        getCarritos: [Carrito]
+        getProducto(_id: ID!): [Producto]
+        getProductos: [Producto]
+        getCarrito(_id: ID!): [Carrito]
+        getCarritos(_id: ID!): [Carrito]
         getDatos: Datos
         getMensaje: [Mensaje]
     }
+    type Msg {
+        mensaje: String
+    }
     type Mutation {
-        createProducto(datos: ProductoInput): Producto
-        createCarrito(): Carrito
-        createMensaje(datos: MensajeInput): Mensaje
-        changeProducto(_id: ID!): [Producto]
-        deleteProducto(_id: ID!): Producto
-        createProductoCarrito(datos: Producto): Carrito
-        deleteCarrito(_id: ID!): Carrito
-        deleteProductoCarrito(_id: ID!): Carrito
+        createProducto(datos: ProductoInput): Msg
+        createCarrito: Msg
+        createMensaje(datos: MensajeInput): Msg
+        changeProducto(_id: ID!): Msg
+        deleteProducto(_id: ID!): Msg
+        createProductoCarrito(datos: ProductoCarritoInput): Msg
+        deleteCarrito(_id: ID!): Msg
+        deleteProductoCarrito(_id: ID!): Msg
     }
 `)
 

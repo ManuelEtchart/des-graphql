@@ -5,20 +5,29 @@ import MongoDB from "../DAOs/DAOMongoDB.js";
 const administrador = true;
 
 const controllerProductos = {
-    productosGET: async (req,res) => {
+    productoGET: async (req,res) => {
         logger.info(`ruta ${req.url} metodo ${req.method} implementada`)
         try {
-            if (req.params.id === undefined) {
-                const res = await MongoDB.productos.getAll()
+            
+                const res = await MongoDB.productos.getById(_id)
                 return res
-            }else{
-                const res = await MongoDB.productos.getById(req.params.id)
-                return res
-            } 
+            
         } catch (error) {
             loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada`)
         }
     },
+    productosGET: async (req,res) => {
+        logger.info(`ruta ${req.url} metodo ${req.method} implementada`)
+        try {
+            
+                const res = await MongoDB.productos.getAll()
+                return res
+            
+        } catch (error) {
+            loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada`)
+        }
+    },
+
     productosPOST: async (req,res) => {
         logger.info(`ruta ${req.url} metodo ${req.method} implementada`)
         try{
@@ -51,7 +60,7 @@ const controllerProductos = {
                 return res
             }else{
                 loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada - Ruta no autorizada`)
-                return {error: '-1', descripcion: `ruta ${req.url} metodo ${req.method} no autorizada`};
+                return {mensaje: {error: '-1', descripcion: `ruta ${req.url} metodo ${req.method} no autorizada`}};
             }
         } catch (error) {
             loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada`)
@@ -66,7 +75,7 @@ const controllerProductos = {
                 return res
             } else {
                 loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada - Ruta no autorizada`)
-                return {error: '-1', descripcion: `ruta ${req.url} metodo ${req.method} no autorizada`}
+                return {mensaje: {error: '-1', descripcion: `ruta ${req.url} metodo ${req.method} no autorizada`}}
             }
         } catch (error) {
             loggerError.error(`${error} - Hubo un error en ruta ${req.url} metodo ${req.method} implementada`)
